@@ -22,12 +22,13 @@ has_many :items
 
 | Column             | Type       | Options                       |
 | ------------------ | ---------- | ----------------------------- |
-| post_code          | string     | null: false unique: true      |
+| post_code          | string     | null: false                   |
 | prefecture_id      | integer    | null: false                   |
 | city               | string     | null: false                   |
 | block              | string     | null: false                   |
-| building           | string     | null: false                   |
+| building           | string     |                               |
 | phone_number       | string     | null: false                   |
+| order              | references | null: false foreign_key: true |
 
 ### Association
 belongs_to :order
@@ -49,10 +50,10 @@ belongs_to :order
 
 ### Association
 belongs_to :user
-belongs_to :oder
+has_one :order
 
 
-## order テーブル
+## orders テーブル
 
 | Column             | Type       | Options                       |
 | ------------------ | ---------- | ----------------------------- |
