@@ -14,11 +14,11 @@
 | birthday           | date   | null: false             |
 
 ### Association
-has_many :order
+has_many :orders
 has_many :items
 
 
-## ship_address テーブル
+## ship_addresses テーブル
 
 | Column             | Type       | Options                       |
 | ------------------ | ---------- | ----------------------------- |
@@ -27,10 +27,10 @@ has_many :items
 | city               | string     | null: false                   |
 | block              | string     | null: false                   |
 | building           | string     | null: false                   |
-| phone_number       | string     | null: false unique: true      |
+| phone_number       | string     | null: false                   |
 
 ### Association
-belongs_to :users
+belongs_to :user
 
 
 ## items テーブル
@@ -40,15 +40,15 @@ belongs_to :users
 | user               | references | null: false foreign_key: true |
 | name_item          | string     | null: false                   |
 | details_item       | text       | null: false                   |
-| category_items_id  | text       | null: false                   |
-| status_items_id    | text       | null: false                   |
-| shipping_fees_id   | text       | null: false                   |
-| ship_regions_id    | text       | null: false                   |
-| lead_times_id      | datetime   | null: false                   |
+| category_item_id   | integer    | null: false                   |
+| status_item_id     | integer    | null: false                   |
+| shipping_fee_id    | integer    | null: false                   |
+| prefecture_id      | integer    | null: false                   |
+| lead_time_id       | integer    | null: false                   |
 | price              | integer    | null: false                   |
 
 ### Association
-belongs_to :users
+belongs_to :user
 
 
 ## order テーブル
@@ -60,3 +60,5 @@ belongs_to :users
 
 ### Association
 belongs_to :ship_address
+belongs_to :user
+belongs_to :item
