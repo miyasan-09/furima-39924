@@ -23,14 +23,14 @@ has_many :items
 | Column             | Type       | Options                       |
 | ------------------ | ---------- | ----------------------------- |
 | post_code          | string     | null: false unique: true      |
-| prefecture_id      | text       | null: false                   |
+| prefecture_id      | integer    | null: false                   |
 | city               | string     | null: false                   |
 | block              | string     | null: false                   |
 | building           | string     | null: false                   |
 | phone_number       | string     | null: false                   |
 
 ### Association
-belongs_to :user
+belongs_to :order
 
 
 ## items テーブル
@@ -49,6 +49,7 @@ belongs_to :user
 
 ### Association
 belongs_to :user
+belongs_to :oder
 
 
 ## order テーブル
@@ -59,6 +60,6 @@ belongs_to :user
 | item               | references | null: false foreign_key: true |
 
 ### Association
-belongs_to :ship_address
+has_one :ship_address
 belongs_to :user
 belongs_to :item
