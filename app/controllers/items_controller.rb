@@ -9,8 +9,13 @@ class ItemsController < ApplicationController
     if @item.save
         redirect_to root_path
     else
+      @items = Item.includes(:user)
       render :new, status: :unprocessable_entity
     end
+  end
+
+  def index
+    @items = Item.includes(:user).order("created_at DESC")
   end
 
   private
