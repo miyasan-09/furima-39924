@@ -128,8 +128,9 @@
     </div>
     <ul class='item-lists'>
 
+    <% if @item == nil %>
     <% @items.each do |item| %>
-    
+
       <li class='list'>
         <%= link_to "#" do %>
         <div class='item-img-content'>
@@ -159,7 +160,7 @@
       </li>
     <% end %>
       <%# 商品がない場合は以下のダミー商品が表示されるようにしましょう %>
-      <% if @item == nil %>
+      <% else %>
       <%# 商品がある場合は表示されないようにしましょう %>
       <li class='list'>
         <%= link_to '#' do %>
