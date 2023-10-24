@@ -18,6 +18,14 @@ class ItemsController < ApplicationController
     @items = Item.includes(:user).order("created_at DESC")
   end
 
+  def show
+    @item = Item.find(params[:id])
+    #user = User.find(params[:id])
+    #@nickname = user.nickname
+  end
+
+
+
   private
   
   def item_params
