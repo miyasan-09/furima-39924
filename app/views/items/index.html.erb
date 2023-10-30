@@ -128,14 +128,14 @@
     </div>
     <ul class='item-lists'>
 
-    <% if @item == nil %>
+    <% if @items[0] != nil %>
     <% @items.each do |item| %>
 
       <li class='list'>
         <%= link_to item_path(item.id) do %>
         <div class='item-img-content'>
           <%= image_tag item.image, class: "item-img" %>
-        <% end %>
+       
 
           <% if item.order != nil %>
           <div class='sold-out'>
@@ -156,9 +156,9 @@
             </div>
           </div>
         </div>
-        
+        <% end %>
       </li>
-    <% end %>
+      <% end %>
     <% else %>
       <li class='list'>
         <%= link_to '#' do %>
@@ -178,6 +178,7 @@
         <% end %>
       </li>
       <% end %>
+
     </ul>
   </div>
   <%# /商品一覧 %>
