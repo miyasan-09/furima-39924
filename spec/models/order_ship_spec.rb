@@ -9,6 +9,7 @@ RSpec.describe OrderShip, type: :model do
 
     context '内容に問題ない場合' do
       it 'すべての値が正しく入力されていれば保存できること' do
+        #binding.pry
         expect(@order_ship).to be_valid
       end
       it 'buildingは空でも保存できること' do
@@ -32,6 +33,21 @@ RSpec.describe OrderShip, type: :model do
         @order_ship.prefecture_id = 1
         @order_ship.valid?
         expect(@order_ship.errors.full_messages).to include("Prefecture can't be blank")
+      end
+      it 'cityを入力しないと保存できないこと' do
+        @order_ship.city = ''
+        @order_ship.valid?
+        expect(@order_ship.errors.full_messages).to include("City can't be blank")
+      end
+      it 'blockを入力しないと保存できないこと' do
+        @order_ship.block = ''
+        @order_ship.valid?
+        expect(@order_ship.errors.full_messages).to include("Block can't be blank")
+      end
+      it 'phone_numberを入力しないと保存できないこと' do
+        @order_ship.phone_number = ''
+        @order_ship.valid?
+        expect(@order_ship.errors.full_messages).to include("Phone number can't be blank")
       end
       it 'userが紐付いていないと保存できないこと' do
         @order_ship.user_id = nil

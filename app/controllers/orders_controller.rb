@@ -1,21 +1,16 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!, only: [:index]
+  before_action :set_order, only: [:index, :create]
 
   def index
     gon.public_key = ENV["PAYJP_PUBLIC_KEY"]
-    @item = Item.find(params[:item_id])
     @order_ship = OrderShip.new
     if @item.order != nil || current_user == @item.user
       redirect_to root_path
     end
   end
 
-  def new
-    @order_ship = OrderShip.new
-  end
-
   def create
-    @item = Item.find(params[:item_id])
     @order_ship = OrderShip.new(order_params)
 
     if @order_ship.valid?
@@ -36,14 +31,10 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order_ship).permit(:post_code, :prefecture_id, :city, :block, :building, :phone_number, :user_id, :price).merge(user_id: current_user.id, item_id: params[:item_id], token: params[:token])
+    params.require(:order_ship).permit(:post_code, :prefecture_id, :city, :block, :building, :phone_number, :user_id).merge(user_id: current_user.id, item_id: params[:item_id], token: params[:token])
   end
 
-  def item_params
-    params.require(:item).permit(:image, :name_item, :details_item, :category_item_id, :status_item_id, :shipping_fee_id, :prefecture_id, :lead_time_id, :price).merge(user_id: current_user.id)
+  def set_order
+    @item = Item.find(params[:item_id])
   end
-
-
-
-
 end
