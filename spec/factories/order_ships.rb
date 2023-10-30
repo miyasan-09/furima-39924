@@ -7,6 +7,5 @@ FactoryBot.define do
         block {'1-1'}
         building {'愛知ハイツ'}
         phone_number {Faker::Number.leading_zero_number(digits: rand(10..11))}
-    
       end
     end

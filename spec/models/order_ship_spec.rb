@@ -49,6 +49,11 @@ RSpec.describe OrderShip, type: :model do
         @order_ship.valid?
         expect(@order_ship.errors.full_messages).to include("Phone number can't be blank")
       end
+      it 'phone_numberは10桁から11桁の半角数値で入力しないと保存できないこと' do
+        @order_ship.phone_number = ''
+        @order_ship.valid?
+        expect(@order_ship.errors.full_messages).to include("Phone number can't be blank")
+      end
       it 'userが紐付いていないと保存できないこと' do
         @order_ship.user_id = nil
         @order_ship.valid?
@@ -58,6 +63,11 @@ RSpec.describe OrderShip, type: :model do
         @order_ship.item_id = nil
         @order_ship.valid?
         expect(@order_ship.errors.full_messages).to include("Item can't be blank")
+      end
+      it "tokenが空では登録できないこと" do
+        @order_ship.token = nil
+        @order_ship.valid?
+        expect(@order_ship.errors.full_messages).to include("Token can't be blank")
       end
     end
   end
