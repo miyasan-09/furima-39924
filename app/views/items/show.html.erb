@@ -23,8 +23,8 @@
       </span>
     </div>
 
-  <% if user_signed_in? %>
-  <%if @item.order == nil%>
+  <% if user_signed_in? && @item.order == nil%>
+  
     <%if current_user.id == @item.user_id %>
       
     <%= link_to "商品の編集", edit_item_path, data: { turbo: false },method: :get, class: "item-red-btn" %>
@@ -35,8 +35,8 @@
       <%# if @item.order == nil %>
     <%= link_to "購入画面に進む", item_orders_path(@item.id), data: { turbo: false },class:"item-red-btn"%>
       <%#  end %>
+    <%# end %>
     <% end %>
-  <% end %>
   <% end %>
     <div class="item-explain-box">
       <span><%= @item.details_item %></span>
