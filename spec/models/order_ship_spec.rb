@@ -43,11 +43,6 @@ RSpec.describe OrderShip, type: :model do
         @order_ship.valid?
         expect(@order_ship.errors.full_messages).to include("Block can't be blank")
       end
-      it 'phone_numberを入力しないと保存できないこと' do
-        @order_ship.phone_number = ''
-        @order_ship.valid?
-        expect(@order_ship.errors.full_messages).to include("Phone number can't be blank")
-      end
       it 'phone_numberが空では登録できないこと' do
         @order_ship.phone_number = ''
         @order_ship.valid?
@@ -78,7 +73,7 @@ RSpec.describe OrderShip, type: :model do
         @order_ship.valid?
         expect(@order_ship.errors.full_messages).to include("Item can't be blank")
       end
-      it "tokenが空では登録できないこと" do
+      it 'tokenが空では登録できないこと' do
         @order_ship.token = nil
         @order_ship.valid?
         expect(@order_ship.errors.full_messages).to include("Token can't be blank")
