@@ -38,7 +38,7 @@ set :repo_url, "git@example.com:me/my_repo.git"
 # Uncomment the following to require manually verifying the host key before first deploy.
 # set :ssh_options, verify_host_key: :secure
 
-capistrano '3.11.0'
+capistrano '3.18.0'
 
 set :application, 'furima-39924'
 
