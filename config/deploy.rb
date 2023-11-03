@@ -42,7 +42,7 @@ capistrano '3.18.0'
 
 set :application, 'furima-39924'
 
-set :repo_url,  'git@github.com:miyasan-09/furima-3992.git'
+set :repo_url,  'git@github.com:miyasan-09/furima-39924.git'
 set :branch, 'main'
 
 set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system', 'public/uploads')
